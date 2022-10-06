@@ -1,0 +1,142 @@
+---
+openapi: 3.0.0
+info:
+  title: Reading API
+  description: This is a API for recive environment and resources information for greenhouses
+  contact:
+    email: zjiang35@bcit.com
+  version: 1.0.0
+paths:
+  /user:
+    get:
+      tags:
+      - getuser
+      summary: get username and password
+      description: get username and password
+      operationId: app.get_username_password
+      parameters:
+        - name: username
+          in: query
+          description: Limits user
+          schema:
+            type: string
+            example: "bennyjiang"
+      responses:
+        "200":
+          description: username password get
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/usernamepass'
+        "400":
+          description: invalid input, object invalid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+    post:
+      tags:
+      - createuser
+      summary: createuser
+      description: createuser
+      operationId: app.user_data_in
+      requestBody:
+        description: createuser
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usernamepass'
+      responses:
+        "200":
+          description: user create
+        "400":
+          description: invalid input, object invalid
+
+  /grade:
+    get:
+      tags:
+      - getgrade
+      summary: getgrade
+      description: getgrade
+      operationId: app.get_raw_data
+      parameters:
+        - name: timestamp
+          in: query
+          description: Limits the number of items on a page
+          schema:
+            type: string
+            format: date-time
+            example: 2016-08-29 09:12:33.001
+      responses:
+        "200":
+          description: grade sent
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/grade'
+        "400":
+          description: invalid input, object invalid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      tags:
+      - creategrade
+      summary: creategrade
+      description: creategrade
+      operationId: app.grade_data_in
+      requestBody:
+        description: creategrade
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/grade'
+      responses:
+        "200":
+          description: user create
+        "400":
+          description: invalid input, object invalid
+components:
+  schemas:
+    usernamepass:
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          type: string
+          example: bennyjiang
+        password:
+          type: string
+          example: "123456"
+      description: username and password info
+    grade:
+      required:
+      - studentID
+      - name
+      - grade
+      type: object
+      properties:
+        studentID:
+          type: string
+          example: "123456789"
+        name:
+          type: string
+          example: "bennyjiang"
+        grade:
+          type: number
+          example: 97
+      description: username and password info

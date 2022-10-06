@@ -1,0 +1,7 @@
+version: 1
+datastore:
+  user: example
+  password: password
+  hostname: localhost
+  port: 3306
+  db: assign

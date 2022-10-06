@@ -1,0 +1,42 @@
+---
+openapi: 3.0.0
+info:
+  title: Reading API
+  description: This is a API for recive environment and resources information for greenhouses
+  contact:
+    email: zjiang35@bcit.com
+  version: 1.0.0
+paths:
+  /usernamepass:
+    post:
+      tags:
+      - auth
+      summary: get username and password
+      description: get username and password
+      operationId: app.username_password_info
+      requestBody:
+        description: username password sent
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usernamepassInfo'
+      responses:
+        "200":
+          description: username password get
+        "400":
+          description: invalid input, object invalid
+components:
+  schemas:
+    usernamepassInfo:
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          type: string
+          example: bennyjiang
+        password:
+          type: string
+          example: "123456"
+      description: username and password info
