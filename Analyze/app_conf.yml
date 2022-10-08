@@ -1,0 +1,8 @@
+version: 1
+datastore:
+  connectionstring: mongodb://mongodb:27017
+  db: grade
+mysql:
+  url: http://mysqlsv:8090/grade
+scheduler:
+  period_sec: 5

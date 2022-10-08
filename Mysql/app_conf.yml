@@ -1,7 +1,7 @@
 version: 1
 datastore:
-  user: example
+  user: test
   password: password
-  hostname: localhost
+  hostname: mysqldb
   port: 3306
   db: assign

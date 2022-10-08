@@ -1,0 +1,10 @@
+requests
+flask
+connexion
+sqlalchemy
+mysql-connector-python
+setuptools
+MarkupSafe==2.0.0
+pyrsistent
+pymysql
+cryptography

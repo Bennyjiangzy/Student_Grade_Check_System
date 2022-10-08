@@ -5,9 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from base import Base
 import yaml
 import datetime
-
 import pymysql
-
 from user import User
 from grade import Grade
 
