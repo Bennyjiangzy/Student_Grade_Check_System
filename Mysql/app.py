@@ -8,6 +8,7 @@ import datetime
 import pymysql
 from user import User
 from grade import Grade
+from flask_cors import CORS
 
 
 with open('app_conf.yml', 'r') as f:
@@ -63,7 +64,7 @@ def grade_data_in(body):
 def user_data_in(body):
 
     session = DB_SESSION()
-
+    print(body)
     user = User(  
             body['username'],
             body['password'],
@@ -77,6 +78,7 @@ def user_data_in(body):
 
 
 app = connexion.FlaskApp(__name__, specification_dir='')
+CORS(app.app, resources={r"*": {"origins": "*", "headers": "*"}})
 app.add_api("openapi.yml",strict_validation=True,validate_responses=True)
 
 if __name__ == "__main__":

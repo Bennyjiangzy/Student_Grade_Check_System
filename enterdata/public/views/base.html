@@ -15,7 +15,7 @@
 			<div class="col-md-6 m-auto text-center">
 				<div class="Dashboard">
 					<h1>Dashboard</h1>
-					<form action="/auth" method="post">
+					<form action="" method="">
 						<label for="studentID">
 							<!-- font awesome icon -->
 							<i class="fas fa-user"></i>
@@ -64,7 +64,7 @@
 			xhr.open("POST", "http://localhost:8090/grade", true);
 			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 			// Send the request over the network
-			xhr.send(JSON.stringify({"data": dataToSend}));
+			xhr.send(JSON.stringify(dataToSend));
     	}
 	</script>
 </html>

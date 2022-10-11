@@ -7,6 +7,7 @@ from pymongo import MongoClient
 import pymongo
 import datetime
 import yaml
+from flask_cors import CORS
 
 LAST_UPDATE_DEFAULT="2022-10-05 18:20:17.885247"
 
@@ -82,6 +83,7 @@ def init_scheduler():
     sched.start()
 
 app = connexion.FlaskApp(__name__, specification_dir='')
+CORS(app.app, resources={r"*": {"origins": "*", "headers": "*"}})
 
 if __name__ == "__main__":
     init_scheduler()
