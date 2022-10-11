@@ -34,6 +34,13 @@ services:
   #     - mysqlsv
   #   image: assign/analyze
 
+  enterdata:
+    depends_on:
+      - mysqlsv
+    image: assign/enterdata
+    ports:
+      - "8091:8091"
+
 networks:
   default:
     name: assignet

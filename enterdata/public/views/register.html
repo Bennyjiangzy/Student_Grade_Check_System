@@ -13,9 +13,9 @@
 	<body>
 		<div class="row mt-5">
 			<div class="col-md-6 m-auto text-center">
-				<div class="login">
+				<div class="register">
 					<h1>Register</h1>
-					<form action="post" method="/redirect">
+					<form action="/redirect" method="post">
 						<label for="username">
 							<!-- font awesome icon -->
 							<i class="fas fa-user"></i>
@@ -42,7 +42,7 @@
 			dataToSend = {"username": usernameToSend,
 						  "password": passwordToSend}
 
-			xhr.open("POST", "http://localhost:8090/user", true);
+			xhr.open("POST", "http://mysqlsv:8090/user", true);
 			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 			// Send the request over the network
 			xhr.send(JSON.stringify(dataToSend));

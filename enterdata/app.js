@@ -29,6 +29,6 @@ app.get("/grades", (req, res) => {
     res.sendFile(path.join(__dirname,"public/views/base.html"))
 })
 
-app.listen(8091, () => console.log("listening on http:localhost:8091"))
+app.listen(8091, () => console.log("listening on http://localhost:8091"))
 
 module.exports = app;
