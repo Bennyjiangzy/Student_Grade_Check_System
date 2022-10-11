@@ -37,6 +37,7 @@
 		submitLoginBtn.addEventListener('click', login);
 
 		var xhr = null;
+		const url = "http://localhost:8080/usernamepass"
 
 		getXmlHttpRequestObject = function () {
 			if (!xhr) {
@@ -46,18 +47,28 @@
 			return xhr;
 		};
 
-		function login() {
+		function login(url, callback) {
 			usernameToSend = document.getElementById('username').value;
 			passwordToSend = document.getElementById('password').value;
-			xhr = getXmlHttpRequestObject();
+			
 			dataToSend = {"username": usernameToSend,
 						  "password": passwordToSend}
+			
+			const xhr = getXmlHttpRequestObject()
+			xhr.onreadystatechange = () => {
+				if (xhr.readyState === 4) {
+					callback(xhr.response)
+				}
+			}
 
 			// asynchronous requests
-			xhr.open("POST", "http://localhost:8080/usernamepass", true);
+			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 			// Send the request over the network
-			xhr.send(JSON.stringify({"data": dataToSend}));
+			xhr.send(JSON.stringify({dataToSend}));
     	}
+
+		
+
 	</script>
 </html>

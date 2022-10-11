@@ -13,12 +13,58 @@
 	<body>
 		<div class="row mt-5">
 			<div class="col-md-6 m-auto text-center">
-				<div class="dashboard">
-					<h1>Hello</h1>
-
+				<div class="Dashboard">
+					<h1>Dashboard</h1>
+					<form action="/auth" method="post">
+						<label for="studentID">
+							<!-- font awesome icon -->
+							<i class="fas fa-user"></i>
+						</label>
+						<input type="text" name="studentID" placeholder="studentID" id="studentID" required>
+						<label for="name">
+							<i class="fas fa-lock"></i>
+						</label>
+						<input type="name" name="name" placeholder="name" id="name" required>
+						<label for="grade">
+							<i class="fas fa-lock"></i>
+						</label>
+						<input type="grade" name="grade" placeholder="grade" id="grade" required>
+						<input id="submit_btn" type="submit" value="Enter">
+					</form>
 				</div>
 			</div>
 		</div>
 		
 	</body>
+	<script>
+		let submitLoginBtn = document.getElementById("submit_btn");
+		submitLoginBtn.addEventListener('click', login);
+
+		var xhr = null;
+
+		getXmlHttpRequestObject = function () {
+			if (!xhr) {
+				// Create a new XMLHttpRequest object 
+				xhr = new XMLHttpRequest();
+			}
+			return xhr;
+		};
+
+		function login() {
+			studentIDToSend = document.getElementById('studentID').value;
+			nameToSend = document.getElementById('name').value;
+			gradeToSend = document.getElementById('grade').value;
+
+			xhr = getXmlHttpRequestObject();
+			dataToSend = {"studentID": studentIDToSend,
+						  "name": nameToSend,
+						  "grade": gradeToSend}
+
+			// asynchronous requests
+			xhr.open("POST", "http://localhost:8090/grade", true);
+			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			// Send the request over the network
+			xhr.send(JSON.stringify({"data": dataToSend}));
+    	}
+	</script>
 </html>
