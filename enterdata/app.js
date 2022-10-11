@@ -18,6 +18,6 @@ app.get("/grades", (req, res) => {
     res.sendFile(path.join(__dirname,"public/views/base.html"))
 })
 
-app.listen(8080, () => console.log("listening on port 8080"))
+app.listen(8091, () => console.log("listening on port http://localhost:8091"))
 
 module.exports = app;
