@@ -14,7 +14,7 @@
 		<div class="row mt-5">
 			<div class="col-md-6 m-auto text-center">
 				<div class="login">
-					<h1>Login</h1>
+					<h1>Register</h1>
 					<form action="/auth" method="post">
 						<label for="username">
 							<!-- font awesome icon -->
@@ -56,11 +56,7 @@
 			xhr.open("POST", "http://localhost:8090/user", true);
 			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 			// Send the request over the network
-<<<<<<< HEAD
 			xhr.send(JSON.stringify({dataToSend}));
-=======
-			xhr.send(JSON.stringify(dataToSend));
->>>>>>> 101a0bc84179866d6a586a9a43caa8934e4d36f5
     	}
 	</script>
 </html>
