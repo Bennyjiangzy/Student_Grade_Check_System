@@ -8,3 +8,4 @@ MarkupSafe==2.0.0
 pyrsistent
 pymysql
 cryptography
+flask_cors

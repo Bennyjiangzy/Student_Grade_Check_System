@@ -2,3 +2,4 @@ requests
 connexion
 apscheduler
 pymongo
+flask_cors
