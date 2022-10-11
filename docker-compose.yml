@@ -29,10 +29,10 @@ services:
     ports:
       - "8080:8080"
 
-  analyzesv:
-    depends_on:
-      - mysqlsv
-    image: assign/analyze
+  # analyzesv:
+  #   depends_on:
+  #     - mysqlsv
+  #   image: assign/analyze
 
 networks:
   default:
