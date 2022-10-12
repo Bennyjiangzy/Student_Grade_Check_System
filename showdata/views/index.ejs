@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <title>Grade</title>
+ </head>
+ <body>
+    <p>Grade Analytics</p>
+    <div>
+        <a href="/getgrades">Get Grades</a>
+        </div>
+        <hr>
+        
+        <% if(allgrades!=null) { %>
+        <table>
+        <tr>
+            <th>Top Grade</th>
+            <th>Average Grade</th>
+        </tr>
+        <% allgrades.forEach(function(item){ %>
+        <tr>
+            <td><%= item.top_grade%></td>
+            <td><%= item.average_grade %></td>       
+        </tr>
+        <% }) %>
+        </table>
+        <% } %>
+</body>
+</html>
