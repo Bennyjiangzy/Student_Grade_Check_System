@@ -33,38 +33,5 @@
 		
 	</body>
 	<script>
-		let submitLoginBtn = document.getElementById("submit_btn");
-		submitLoginBtn.addEventListener('click', login);
-
-		var xhr = null;
-		const url = "http://localhost:8080/usernamepass"
-
-		getXmlHttpRequestObject = function () {
-			if (!xhr) {
-				// Create a new XMLHttpRequest object 
-				xhr = new XMLHttpRequest();
-			}
-			return xhr;
-		};
-
-		function login(url, callback) {
-			usernameToSend = document.getElementById('username').value;
-			passwordToSend = document.getElementById('password').value;
-			
-			dataToSend = {"username": usernameToSend,
-						  "password": passwordToSend}
-			
-			const xhr = getXmlHttpRequestObject()
-
-			// asynchronous requests
-			xhr.open("POST", url, true);
-			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-			// Send the request over the network
-			xhr.send(JSON.stringify(dataToSend));
-
-    	}
-
-		
-
 	</script>
 </html>
