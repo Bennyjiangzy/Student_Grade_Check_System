@@ -7,5 +7,7 @@ COPY . /src
 # Install app and dependencies into /src in container
 RUN cd /src; npm install
 
+EXPOSE 8091
+
 # Run this command (starts the app) when the container starts
 CMD cd /src && npm start

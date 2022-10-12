@@ -17,12 +17,13 @@ app.get("/register", (req, res) => {
 
 app.post('/redirect', function (req, res) {
     console.log(req.body)
-    res.redirect('/login')
+    res.status(200).redirect('/login')
   })
 
 app.post('/get', function (req, res) {
     console.log(req.body)
-    res.redirect('/grades')
+    console.log(res.statusCode)
+    res.status(200).redirect('/grades')
   })
 
 app.get("/grades", (req, res) => {

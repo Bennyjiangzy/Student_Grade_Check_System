@@ -29,7 +29,7 @@
 							<i class="fas fa-notebook"></i>
 						</label>
 						<input type="grade" name="grade" placeholder="grade" id="grade" required>
-						<input id="submit_btn" type="submit" value="Enter">
+						<input id="submit_btn" type="submit" value="Enter" onclick=alert()>
 						<alert></alert>
 					</form>
 				</div>
@@ -62,10 +62,15 @@
 						  "grade": Number(gradeToSend)}
 
 			// asynchronous requests
-			xhr.open("POST", "http://mysqlsv:8090/grade", true);
+			xhr.open("POST", "http://localhost:8090/grade", true);
 			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 			// Send the request over the network
 			xhr.send(JSON.stringify(dataToSend));
     	}
+
+		function alert () {
+			alert("The form has submitted")
+		}
+		
 	</script>
 </html>
