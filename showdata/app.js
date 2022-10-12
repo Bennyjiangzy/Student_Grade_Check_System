@@ -17,7 +17,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/getgrades", function (req, res) {   
-    allgrades = grades.find()
+    var allgrades = grades.find()
     console.log(allgrades)
 
     if ((allgrades.count()) === 0) {
