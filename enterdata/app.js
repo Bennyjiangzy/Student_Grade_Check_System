@@ -24,7 +24,7 @@ app.post('/redirect', function (req, res) {
 app.post('/get', function (req, res) {
 
   console.log(req.body)
-  const url = "http://localhost:8080/usernamepass"
+  const url = "http://authsv:8080/usernamepass"
   var xhr = new XMLHttpRequest();
   // asynchronous requests
   xhr.open("POST", url, true);

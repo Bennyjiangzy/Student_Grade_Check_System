@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+html, body{
+    background-color: #d4fcc380;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    min-height: 100%;
+    position: relative;
+ }
+
+#submit_btn{
+    border: 1px solid #0083ce;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 3px 12px;
+    cursor: pointer;
+    background-color: #0083ce ;
+    color: white;
+}

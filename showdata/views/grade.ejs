@@ -11,17 +11,15 @@
         <hr>
         
         <% if(allgrades!=null) { %>
-        <table>
+        <table border="1">
         <tr>
             <th>Top Grade</th>
             <th>Average Grade</th>
         </tr>
-        <% allgrades.forEach(function(item){ %>
         <tr>
-            <td><%= item.top_grade%></td>
-            <td><%= item.average_grade %></td>       
+            <td><%= allgrades[0].top_grade %></td>
+            <td><%= allgrades[0].average_grade %></td>       
         </tr>
-        <% }) %>
         </table>
         <% } %>
 </body>
