@@ -44,7 +44,8 @@ const get = { grades: async () =>{
   try{
     const database = client.db("test")
     const grades = database.collection("grade")
-    let allgrades = await grades.find().toArray()
+    const test = {last_updated:-1}
+    let allgrades = await grades.find().sort(test).toArray()
     return allgrades
   }
   catch{

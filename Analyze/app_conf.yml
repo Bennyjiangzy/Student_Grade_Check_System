@@ -5,4 +5,4 @@ datastore:
 mysql:
   url: http://mysqlsv:8090/grade
 scheduler:
-  period_sec: 15
+  period_sec: 20
