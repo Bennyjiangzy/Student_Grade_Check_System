@@ -18,13 +18,19 @@ app.get("/register", (req, res) => {
 
 app.post('/redirect', function (req, res) {
     console.log(req.body)
+    const url = "http://bk-lb:8080/user"
+    var xhr = new XMLHttpRequest();
+    // asynchronous requests
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(req.body));
     res.status(200).redirect('/login')
   })
 
 app.post('/get', function (req, res) {
 
   console.log(req.body)
-  const url = "http://authsv:8080/usernamepass"
+  const url = "http://bk-lb:8080/usernamepass"
   var xhr = new XMLHttpRequest();
   // asynchronous requests
   xhr.open("POST", url, true);
@@ -39,6 +45,21 @@ app.post('/get', function (req, res) {
     }
 };
   xhr.send(JSON.stringify(req.body));
+})
+
+
+app.post('/savegrade', function (req, res) {
+
+  console.log(req.body)
+  dataToSend = {"studentID": req.body.studentID,
+                  "name": req.body.name,
+                  "grade": Number(req.body.grade)}
+  var xhr = new XMLHttpRequest();
+  // asynchronous requests
+  xhr.open("POST", "http://bk-lb:8090/grade", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  // Send the request over the network
+  xhr.send(JSON.stringify(dataToSend));
 })
 
 app.get("/grades", (req, res) => {

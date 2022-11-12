@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const XMLHttpRequest = require('xhr2');
 
-const uri = "mongodb://mongodb:27017";
+const uri = "mongodb://bk-lb:27017";
 
 
 const app = express()
@@ -22,7 +22,7 @@ app.get("/login", (req, res) => {
 
 app.post('/get', function (req, res) {
   console.log(req.body)
-  const url = "http://authsv:8080/usernamepass"
+  const url = "http://bk-lb:8080/usernamepass"
   var xhr = new XMLHttpRequest();
   // asynchronous requests
   xhr.open("POST", url, true);

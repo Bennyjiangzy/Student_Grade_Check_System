@@ -2,50 +2,48 @@ version: '3.7'
 
 services:
 
-  mongodb:
-    image: mongo:latest
-    ports:
-      - 27017:27017
+  # mongodb:
+  #   image: mongo:latest
+  #   ports:
+  #     - 27017:27017
       
-  mysqldb:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: passpord
-    volumes:
-      - "./database.sql:/docker-entrypoint-initdb.d/1.sql"
+  # mysqldb:
+  #   image: mysql
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: passpord
+  #   volumes:
+  #     - "./database.sql:/docker-entrypoint-initdb.d/1.sql"
 
-  mysqlsv:
-    depends_on:
-      - mysqldb
-    image: assign/mysql
-    ports:
-      - "8090:8090"
+  # mysqlsv:
+  #   depends_on:
+  #     - mysqldb
+  #   image: assign/mysql
+  #   ports:
+  #     - "8090:8090"
 
-  authsv:
-    depends_on:
-      - mysqlsv
-    image: assign/auth
-    ports:
-      - "8080:8080"
+  # authsv:
+  #   depends_on:
+  #     - mysqlsv
+  #   image: assign/auth
+  #   ports:
+  #     - "8080:8080"
 
-  analyzesv:
-    depends_on:
-      - mysqlsv
-    image: assign/analyze
+  # analyzesv:
+  #   depends_on:
+  #     - mysqlsv
+  #   image: assign/analyze
 
   enterdata:
-    depends_on:
-      - mysqlsv
-    image: assign/enterdata
+    image: bennyjiang/enterdata
     ports:
       - "8091:8091"
-  
-  showdata:
-    image: assign/showdata
-    ports:
-      - "3000:3000"
 
-networks:
-  default:
-    name: assignet
+  # test:
+  #   image: dashboard
+  #   ports:
+  #     - "3000:3000"
+
+# networks:
+#   default:
+#     name: assignet

@@ -87,4 +87,4 @@ CORS(app.app, resources={r"*": {"origins": "*", "headers": "*"}})
 
 if __name__ == "__main__":
     init_scheduler()
-    app.run(port=8091)
+    app.run(port=8092)
