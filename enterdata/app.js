@@ -18,13 +18,13 @@ app.get("/register", (req, res) => {
 
 app.post('/redirect', function (req, res) {
     console.log(req.body)
-    const url = "http://bk-lb:8080/user"
+    const url = "http://bk-lb:8090/user"
     var xhr = new XMLHttpRequest();
     // asynchronous requests
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify(req.body));
-    res.status(200).redirect('/login')
+    res.redirect('/login')
   })
 
 app.post('/get', function (req, res) {
