@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend-pod
+  labels:
+    app: backend
+spec:
+  containers:
+    - name: analyze
+      image: bennyjiang/analyze
+      ports:
+        - containerPort: 8092
+    - name: mysql
+      image: bennyjiang/mysql
+      ports:
+        - containerPort: 3306
+    - name: mysqlsv
+      image: bennyjiang/mysqlsv
+      ports:
+        - containerPort: 8090
+    - name: auth
+      image: bennyjiang/auth
+      ports:
+        - containerPort: 8080
+    - name: mongodb
+      image: bennyjiang/mongodb
+      ports:
+        - containerPort: 27017

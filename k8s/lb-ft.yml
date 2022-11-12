@@ -1,0 +1,18 @@
+# LoadBalancer Service. Will only work on supported cloud platforms (AKS, EKS, GKE, DOK, IBM, LKE etc...)
+# Listens externally on 80 and forwards to Pod/container on 8080
+apiVersion: v1
+kind: Service
+metadata:
+  name: ft-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - name: enterdata
+    port: 8091
+    targetPort: 8091
+  - name: showdata
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: frontend
+

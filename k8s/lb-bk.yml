@@ -1,0 +1,26 @@
+# LoadBalancer Service. Will only work on supported cloud platforms (AKS, EKS, GKE, DOK, IBM, LKE etc...)
+# Listens externally on 80 and forwards to Pod/container on 8080
+apiVersion: v1
+kind: Service
+metadata:
+  name: bk-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - name: analyze
+    port: 8092
+    targetPort: 8092
+  - name: mysqlsv
+    port: 8090
+    targetPort: 8090
+  - name: auth
+    port: 8080
+    targetPort: 8080
+  - name: mysql
+    port: 3306
+    targetPort: 3306
+  - name: mongodb
+    port: 27017
+    targetPort: 27017
+  selector:
+    app: backend

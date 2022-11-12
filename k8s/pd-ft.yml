@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  labels:
+    app: frontend
+spec:
+  containers:
+    - name: enterdata
+      image: bennyjiang/enterdata
+      ports:
+        - containerPort: 8091
+    - name: showdata
+      image: bennyjiang/showdata
+      ports:
+        - containerPort: 3000
