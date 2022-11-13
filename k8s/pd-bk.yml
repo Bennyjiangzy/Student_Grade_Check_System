@@ -7,22 +7,22 @@ metadata:
 spec:
   containers:
     - name: analyze
-      image: bennyjiang/analyze
+      image: us.gcr.io/app-368216/cluster-1/analyze
       ports:
         - containerPort: 8092
     - name: mysql
-      image: bennyjiang/mysql
+      image: us.gcr.io/app-368216/cluster-1/mysql
       ports:
         - containerPort: 3306
     - name: mysqlsv
-      image: bennyjiang/mysqlsv
+      image: us.gcr.io/app-368216/cluster-1/mysqlsv
       ports:
         - containerPort: 8090
     - name: auth
-      image: bennyjiang/auth
+      image: us.gcr.io/app-368216/cluster-1/auth
       ports:
         - containerPort: 8080
     - name: mongodb
-      image: bennyjiang/mongodb
+      image: us.gcr.io/app-368216/cluster-1/mongodb
       ports:
         - containerPort: 27017

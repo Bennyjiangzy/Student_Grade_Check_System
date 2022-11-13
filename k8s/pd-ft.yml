@@ -7,10 +7,10 @@ metadata:
 spec:
   containers:
     - name: enterdata
-      image: bennyjiang/enterdata
+      image: us.gcr.io/app-368216/cluster-1/enterdata
       ports:
         - containerPort: 8091
     - name: showdata
-      image: bennyjiang/showdata
+      image: us.gcr.io/app-368216/cluster-1/showdata
       ports:
         - containerPort: 3000
