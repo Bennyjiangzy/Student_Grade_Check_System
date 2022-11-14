@@ -14,27 +14,34 @@ spec:
       labels:
         app: backend-dep
     spec: 
+      volumes:
+      persistentVolumeClaim:   
+        claimName: mysql-pvc
       containers:
-        - name: analyze
-          image: us.gcr.io/app-368216/cluster-1/analyze
-          ports:
-            - containerPort: 8092
-        - name: mysql
-          image: us.gcr.io/app-368216/cluster-1/mysql
-          ports:
-            - containerPort: 3306
-        - name: mysqlsv
-          image: us.gcr.io/app-368216/cluster-1/mysqlsv
-          ports:
-            - containerPort: 8090
-          resources:
-            requests:
-              cpu: "250m"
-        - name: auth
-          image: us.gcr.io/app-368216/cluster-1/auth
-          ports:
-            - containerPort: 8080
-        - name: mongodb
-          image: us.gcr.io/app-368216/cluster-1/mongodb
-          ports:
-            - containerPort: 27017
+      - name: analyze
+        image: us.gcr.io/app-368216/cluster-1/analyze
+        ports:
+          - containerPort: 8092
+      - name: mysql
+        image: us.gcr.io/app-368216/cluster-1/mysql
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: mysql-pv
+          mountPath: /var/lib/mysql
+
+      - name: mysqlsv
+        image: us.gcr.io/app-368216/cluster-1/mysqlsv
+        ports:
+          - containerPort: 8090
+        resources:
+          requests:
+            cpu: "250m"
+      - name: auth
+        image: us.gcr.io/app-368216/cluster-1/auth
+        ports:
+          - containerPort: 8080
+      - name: mongodb
+        image: us.gcr.io/app-368216/cluster-1/mongodb
+        ports:
+          - containerPort: 27017
