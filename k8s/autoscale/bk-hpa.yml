@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: backend-dep
+  name: auth-sv-backend-dep
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: backend-dep
+    name: auth-sv-backend-dep
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 50

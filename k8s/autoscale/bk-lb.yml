@@ -13,6 +13,17 @@ spec:
   - name: mysqlsv
     port: 8090
     targetPort: 8090
+  selector:
+    app: auth-sv-backend-dep
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bk-lb-database
+spec:
+  type: LoadBalancer
+  ports:
   - name: auth
     port: 8080
     targetPort: 8080
@@ -23,4 +34,4 @@ spec:
     port: 27017
     targetPort: 27017
   selector:
-    app: backend-dep
+    app: mysql-analyze-mongo-pod
