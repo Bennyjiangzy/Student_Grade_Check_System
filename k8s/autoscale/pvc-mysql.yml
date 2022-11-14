@@ -8,4 +8,6 @@ spec:
   resources:
     requests:
       storage: 2Gi
-  volumeName: mysql-pv
+  selector:
+    matchLabels:
+      name: mysql-pv
