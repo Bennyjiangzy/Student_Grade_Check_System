@@ -15,8 +15,9 @@ spec:
         app: backend-dep
     spec: 
       volumes:
-      persistentVolumeClaim:   
-        claimName: mysql-pvc
+      - name: mysql-pv
+        persistentVolumeClaim:   
+          claimName: mysql-pvc
       containers:
       - name: analyze
         image: us.gcr.io/app-368216/cluster-1/analyze
