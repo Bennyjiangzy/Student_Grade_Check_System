@@ -7,5 +7,5 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  # hostPath:
-  #   path: /var/lib/mysql
+  hostPath:
+    path: /var/lib/mysql
