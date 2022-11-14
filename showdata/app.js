@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const XMLHttpRequest = require('xhr2');
 
-const uri = "mongodb://bk-lb:27017";
+const uri = "mongodb://bk-lb-database:27017";
 
 
 const app = express()

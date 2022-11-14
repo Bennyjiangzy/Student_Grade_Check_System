@@ -3,6 +3,6 @@ datastore:
   connectionstring: mongodb://localhost:27017
   db: grade
 mysql:
-  url: http://localhost:8090/grade
+  url: http://bk-lb:8090/grade
 scheduler:
   period_sec: 20
