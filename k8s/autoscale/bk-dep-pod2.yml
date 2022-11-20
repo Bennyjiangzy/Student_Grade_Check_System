@@ -7,10 +7,13 @@ metadata:
   labels:
     app: mysql-analyze-mongo-pod
 spec:
-    volumes:
+  volumes:
     - name: mysql-pv
       persistentVolumeClaim:   
         claimName: mysql-pvc
+    - name: mongo-pv
+      persistentVolumeClaim:   
+        claimName: mongo-pvc
   containers:
     - name: analyze
       image: us.gcr.io/app-368216/cluster-1/analyze
