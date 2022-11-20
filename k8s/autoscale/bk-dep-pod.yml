@@ -1,28 +1,51 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: auth-sv-backend-dep
+#   labels:
+#     app: auth-sv-backend-dep
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: auth-sv-backend-dep
+#   template:
+#     metadata:
+#       labels:
+#         app: auth-sv-backend-dep
+#     spec: 
+#       containers:
+#       - name: mysqlsv
+#         image: us.gcr.io/app-368216/cluster-1/mysqlsv
+#         ports:
+#           - containerPort: 8090
+#         resources:
+#           requests:
+#             cpu: "250m"
+#       - name: auth
+#         image: us.gcr.io/app-368216/cluster-1/auth
+#         ports:
+#           - containerPort: 8080
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-sv-backend-dep
+  name: web-deploy-benny2
   labels:
-    app: auth-sv-backend-dep
+    app: benny
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
-      app: auth-sv-backend-dep
+      app: benny
   template:
     metadata:
       labels:
-        app: auth-sv-backend-dep
+        app: benny
     spec: 
+      terminationGracePeriodSeconds: 60
       containers:
-      - name: mysqlsv
-        image: us.gcr.io/app-368216/cluster-1/mysqlsv
+      - name: hello-pod
+        image: bennyjiang/lab8:latest
+        imagePullPolicy: Always
         ports:
-          - containerPort: 8090
-        resources:
-          requests:
-            cpu: "250m"
-      - name: auth
-        image: us.gcr.io/app-368216/cluster-1/auth
-        ports:
-          - containerPort: 8080
+        - containerPort: 8080
