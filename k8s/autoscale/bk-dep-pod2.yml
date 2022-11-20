@@ -10,7 +10,7 @@ spec:
     volumes:
     - name: mysql-pv
       persistentVolumeClaim:   
-        claimName: mysql-pvc
+        claimName: mysql-asd
     - name: mongo-pv
       persistentVolumeClaim:   
         claimName: mongo-asd
