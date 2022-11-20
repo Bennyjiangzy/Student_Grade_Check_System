@@ -61,4 +61,4 @@ spec:
         - containerPort: 27017
       volumeMounts:
         - name: mongo-pv
-          mountPath: /var/lib/mysql
+          mountPath: /data/db

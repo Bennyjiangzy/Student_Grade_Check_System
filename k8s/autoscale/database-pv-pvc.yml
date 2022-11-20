@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: /var/lib/mysql
+    path: /mnt/mongo_data
 ---
 #mongo pvc
 kind: PersistentVolumeClaim
