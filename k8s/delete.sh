@@ -6,6 +6,6 @@ kubectl delete pod/mysql-analyze-mongo-pod
 kubectl delete deployment auth-sv-backend-dep
 kubectl delete pvc mongo-pvc
 kubectl delete pvc mysql-pvc
-kubectk delete pv mongo-pv
-kubectk delete pv mysql-pv
+kubectl delete pv mongo-pv
+kubectl delete pv mysql-pv
 kubectl delete horizontalpodautoscaler.autoscaling/auth-sv-backend-dep
