@@ -14,18 +14,25 @@ spec:
     - name: mongo-pv
       persistentVolumeClaim:   
         claimName: mongo-pvc
-  containers:
-    - name: analyze
-      image: us.gcr.io/app-368216/cluster-1/analyze
-      ports:
-        - containerPort: 8092
-    - name: mysql
-      image: us.gcr.io/app-368216/cluster-1/mysql
-      ports:
-        - containerPort: 3306
+  initContainers:
+    - name: chmod-er
+      image: busybox:latest
+      command: ["/bin/chown","-R","1000:1000", "/data/db"]
       volumeMounts:
-        - name: mysql-pv
-          mountPath: /var/lib/mysql
+      - name: mongo-pv  # or whatever
+        mountPath: /data/db
+  containers:
+    # - name: analyze
+    #   image: us.gcr.io/app-368216/cluster-1/analyze
+    #   ports:
+    #     - containerPort: 8092
+    # - name: mysql
+    #   image: us.gcr.io/app-368216/cluster-1/mysql
+    #   ports:
+    #     - containerPort: 3306
+    #   volumeMounts:
+    #     - name: mysql-pv
+    #       mountPath: /var/lib/mysql
     - name: mongodb
       image: mongo:latest
       ports:
