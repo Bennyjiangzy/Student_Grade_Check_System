@@ -1,33 +1,36 @@
 #mongo pv
-apiVersion: v1
-kind: PersistentVolume
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
 metadata:
-  name: mongo-pv
+  name: mongo-sc
   labels:
-    name: mongo-pv
-spec:
-  capacity:
-    storage: 5Gi
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: /mnt
+    name: mongo-sc
+provisioner: kubernetes.io/portworx-volume
+# spec:
+#   capacity:
+#     storage: 5Gi
+#   storageClassName: standard
+#   accessModes:
+#     - ReadWriteMany
+#   hostPath:
+#     path: /mnt
 ---
 #mongo pvc
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: mongo-pvc
+  annotations:
+    volume.beta.kubernetes.io/storage-class: mongo-sc
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Gi
-  selector:
-    matchLabels:
-      name: mongo-pv
+      storage: 1Gi
+  # selector:
+  #   matchLabels:
+  #     name: mongo-sc
 ---
 #mysql pv
 apiVersion: v1
