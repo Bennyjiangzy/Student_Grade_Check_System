@@ -14,6 +14,17 @@ spec:
     - name: mongo-pv
       persistentVolumeClaim:   
         claimName: mongo-pvc
+  initContainers:
+    - name: chmod-er
+      image: busybox:latest
+      command:
+      - /bin/chown
+      - -R
+      - "1000"  # or whatever the mongo UID is, use string "1000" not 1000 due to yaml
+      - /data/db
+      volumeMounts:
+        - name: mongo-pv
+          mountPath: /data/db
   containers:
     - name: analyze
       image: us.gcr.io/app-368216/cluster-1/analyze
@@ -30,6 +41,3 @@ spec:
       image: us.gcr.io/app-368216/cluster-1/mongodb
       ports:
         - containerPort: 27017
-      volumeMounts:
-        - name: mongo-pv
-          mountPath: /data
