@@ -8,7 +8,7 @@ spec:
     kind: Deployment
     name: auth-sv-backend-dep
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 50
   behavior:
     scaleDown:

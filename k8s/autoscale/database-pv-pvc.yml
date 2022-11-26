@@ -1,19 +1,30 @@
+# ---
+# #mysql pv
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: mysql-pv
+#   labels:
+#     name: mysql-pv
+# spec:
+#   capacity:
+#     storage: 5Gi
+#   storageClassName: standard
+#   accessModes:
+#     - ReadWriteMany
+#   hostPath:
+#     path: /var/lib/mysql
 ---
-#mysql pv
-apiVersion: v1
-kind: PersistentVolume
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  name: mysql-pv
-  labels:
-    name: mysql-pv
-spec:
-  capacity:
-    storage: 5Gi
-  storageClassName: standard
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: /var/lib/mysql
+  name: mysql-sc
+provisioner: k8s.io/minikube-hostpath 
+volumeBindingMode: Immediate
+parameters:
+ type: gp2 
+allowVolumeExpansion: true
+reclaimPolicy: Retain
 ---
 #mysql pvc
 kind: PersistentVolumeClaim
@@ -23,9 +34,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName: mysql-sc
   resources:
     requests:
       storage: 2Gi
-  selector:
-    matchLabels:
-      name: mysql-pv
+  # selector:
+  #   matchLabels:
+  #     name: mysql-sc
