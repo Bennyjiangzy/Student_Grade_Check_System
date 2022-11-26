@@ -1,4 +1,18 @@
 ---
+#mysql pvc
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
+  storageClassName: standard-rwo
+
+---
 # mysql mongodb analyze pod
 apiVersion: v1
 kind: Pod
@@ -22,7 +36,7 @@ spec:
         - containerPort: 3306
       volumeMounts:
         - name: mysql-data
-          mountPath: /var/lib/mysql
+          mountPath: "/var/lib/mysql"
     - name: mongodb
       image: mongo:latest
       ports:
