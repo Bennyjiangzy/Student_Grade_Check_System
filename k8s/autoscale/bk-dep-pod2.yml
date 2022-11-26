@@ -8,7 +8,7 @@ metadata:
     app: mysql-analyze-mongo-pod
 spec:
   volumes:
-    - name: mysql-pv
+    - name: mysql-data
       persistentVolumeClaim:   
         claimName: mysql-pvc
   containers:
@@ -21,7 +21,7 @@ spec:
       ports:
         - containerPort: 3306
       volumeMounts:
-        - name: mysql-pv
+        - name: mysql-data
           mountPath: /var/lib/mysql
     - name: mongodb
       image: mongo:latest
