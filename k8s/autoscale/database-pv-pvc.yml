@@ -42,17 +42,17 @@
 
 ---
 #mysql pvc
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
 spec:
-  storageClassName: standard-rwo
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 30Gi
+  storageClassName: standard-rwo
   # selector:
   #   matchLabels:
   #     name: mysql-pv
