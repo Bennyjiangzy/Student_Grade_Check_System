@@ -14,15 +14,44 @@
 #     - ReadWriteMany
 #   hostPath:
 #     path: /var/lib/mysql
----
-#mysql pvc
-kind: PersistentVolumeClaim
-apiVersion: v1
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
-  name: mysql-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 2Gi
+  name: mysql-sc
+provisioner: kubernetes.io/gce-pd
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+parameters:
+  type: pd-standard
+  fstype: ext4
+  replication-type: none
+
+---
+apiVersion: v1
+ kind: PersistentVolumeClaim
+ metadata:
+   name: mysql-pvc
+ spec:
+   storageClassName: mysql-sc
+   accessModes:
+     - ReadWriteOnce
+   resources:
+     requests:
+       storage: 5Gi
+
+# ---
+# #mysql pvc
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: mysql-pvc
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 2Gi
+#   selector:
+#     matchLabels:
+#       name: mysql-pv
